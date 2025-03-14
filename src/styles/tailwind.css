@@ -1,11 +1,25 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @plugin '@tailwindcss/typography';
 @plugin '@tailwindcss/forms';
 
+@theme {
+  /*Infinite scroll animation*/
+  --animate-infinite-scroll: infinite-scroll 25s linear infinite;
+
+  @keyframes infinite-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+}
 
 @theme {
-  /* Her tilføjes theme variable // tokens */
+  /*custom cursor*/
+  --handcursor: url(/cursor.svg) 25 25, pointer;
 }
 
 @layer base {
@@ -18,11 +32,11 @@
   }
 
   /*Tobii mods*/
-    .tobii-zoom{
-      width: 100%;
+  .tobii-zoom {
+    width: 100%;
   }
   .tobii__slide figure > img {
-      padding-bottom: 50px;
+    padding-bottom: 50px;
   }
 
   /* iframe {
@@ -31,13 +45,18 @@
   } */
 
   .tobii {
-      background-color: black;
+    background-color: black;
   }
 }
 
-@layer components{
-
+@layer components {
 }
-@layer utilities{
-  
+@layer utilities {
+}
+
+@layer base {
+  a,
+  button {
+    @apply cursor-(--handcursor);
+  }
 }
